@@ -22,10 +22,6 @@
   ;;              (transpose)      (unique)
   (->> strings (apply map vector) (map set)))
 
-(defn enumerate
-  [coll]
-  (map vector coll (range)))
-
 (defn regex-goals
   [pattern target-vars]
   (let [sets (-> pattern
