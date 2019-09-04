@@ -1,0 +1,24 @@
+{:paths ["resources" "src"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.1"}
+        org.clojure/test.check {:mvn/version "0.10.0"}
+        com.gfredericks/test.chuck {:mvn/version "0.2.10"}
+        cheshire {:mvn/version "5.9.0"}
+        org.clojure/core.logic {:mvn/version "0.8.11"}
+        com.rpl/specter {:mvn/version "1.1.2"}
+        eidolon {:mvn/version "0.1.0"}}
+ :aliases
+ {:test {:main-opts ["-m" "kaocha.runner"]
+         :extra-paths ["test-resources" "test"]
+         :extra-deps {lambdaisland/kaocha {:mvn/version "0.0-529"}}}
+  :native-image
+  {:main-opts ["-m clj.native-image lvh.regex-crossword"
+               "--verbose"
+               "--no-fallback"
+               "-Dclojure.compiler.direct-linking=true"
+               "-H:Name=regex-crossword"
+               "-H:+ReportExceptionStackTraces"
+               "--initialize-at-build-time"
+               "--report-unsupported-elements-at-runtime"]
+   :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
+   :extra-deps {clj.native-image {:git/url "https://github.com/taylorwood/clj.native-image.git"
+                                  :sha "e480cb92b9a85913b3bcad9d878db237d810f286"}}}}}

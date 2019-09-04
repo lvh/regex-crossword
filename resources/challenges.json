@@ -1,0 +1,894 @@
+[{
+	"id": "tutorial",
+	"date": "2013-04-13T20:11:00.000Z",
+	"name": "Tutorial",
+	"descr": "A step by step tutorial, teaching you the different symbols and regex patterns.",
+	"achievement_id": "babysteps",
+	"puzzles": [{
+		"id": "272901bb-0855-4157-9b45-272935da8c93",
+		"name": "The OR symbol",
+		"patternsX": [
+			["A|B"]
+		],
+		"patternsY": [
+			["A|Z"]
+		]
+	}, {
+		"id": "6915fafc-3323-484d-b801-5daac73ddb56",
+		"name": "A Range of characters",
+		"patternsX": [
+			["[ABC]"]
+		],
+		"patternsY": [
+			["[BDF]"]
+		]
+	}, {
+		"id": "5570da18-e8a5-4f5f-8813-185457f9918c",
+		"name": "Characters NOT to include",
+		"patternsX": [
+			["[^AB]"]
+		],
+		"patternsY": [
+			["[ABC]"]
+		]
+	}, {
+		"id": "e6fe3a0a-077b-4ff9-b063-2a786883b9d6",
+		"name": "Zero or more",
+		"patternsX": [
+			["A*"]
+		],
+		"patternsY": [
+			["A"],
+			["AB*"]
+		]
+	}, {
+		"id": "98f04981-677e-4f72-97c0-32778a7471a5",
+		"name": "Zero or one",
+		"patternsX": [
+			["A?B?"]
+		],
+		"patternsY": [
+			["A|C"],
+			["B"]
+		]
+	}, {
+		"id": "ef043b34-4b11-46ee-908d-8fa0a5fb7f9e",
+		"name": "One or more",
+		"patternsX": [
+			["A+"]
+		],
+		"patternsY": [
+			["A|B"],
+			["A|Z"]
+		]
+	}, {
+		"id": "d2059aa3-c670-4259-91d0-595d8faa3897",
+		"name": "Backreference",
+		"patternsX": [
+			["(A)\\1"]
+		],
+		"patternsY": [
+			["A|B"],
+			["A|B"]
+		]
+	}, {
+		"id": "b7d83f9c-609d-4861-8975-93b1e56acdd9",
+		"name": "Specific amount",
+		"patternsX": [
+			["A{2,}"]
+		],
+		"patternsY": [
+			["A{1}"],
+			["B|A"]
+		]
+	}, {
+		"id": "5e881cd1-8592-4bbf-8af0-51849d3994ef",
+		"name": "Space",
+		"patternsX": [
+			["A|\\s"]
+		],
+		"patternsY": [
+			["\\s"]
+		]
+	}]
+}, {
+	"id": "beginner",
+	"date": "2013-04-13T21:11:00.000Z",
+	"name": "Beginner",
+	"descr": "Cut your teeth on an easy set of crosswords, learning the basics of regular expressions.",
+	"achievement_id": "newbie",
+	"puzzles": [{
+		"id": "475e811a-da59-4ce8-9b80-3124b33cc041",
+		"name": "Beatles",
+		"patternsX": [
+			["[^SPEAK]+"],
+			["EP|IP|EF"]
+		],
+		"patternsY": [
+			["HE|LL|O+"],
+			["[PLEASE]+"]
+		]
+	}, {
+		"id": "27725dbd-2c90-44ef-8a2e-53f54e7a2590",
+		"name": "Naughty",
+		"patternsX": [
+			["(A|B|C)\\1"],
+			["(AB|OE|SK)"]
+		],
+		"patternsY": [
+			[".*M?O.*"],
+			["(AN|FE|BE)"]
+		]
+	}, {
+		"id": "c9a9dce7-9300-47f7-b47f-ff0a0403b411",
+		"name": "Ghost",
+		"patternsX": [
+			["[COBRA]+"],
+			["(AB|O|OR)+"]
+		],
+		"patternsY": [
+			["(.)+\\1"],
+			["[^ABRC]+"]
+		]
+	}, {
+		"id": "85b1c976-6c89-4d3a-9a2a-f90a6a12a564",
+		"name": "Symbolism",
+		"patternsX": [
+			[".?.+"],
+			[".+"]
+		],
+		"patternsY": [
+			["[*]+"],
+			["/+"]
+		]
+	}, {
+		"id": "d02a5949-9b96-475f-9311-18bf886654fb",
+		"name": "Airstrip One",
+		"patternsX": [
+			["\\d[2480]"],
+			["56|94|73"]
+		],
+		"patternsY": [
+			["18|19|20"],
+			["[6789]\\d"]
+		]
+	}]
+}, {
+	"id": "intermediate",
+	"date": "2013-04-13T22:11:00.000Z",
+	"name": "Intermediate",
+	"descr": "So you've got skills eh? Let's see how you handle a tougher challenge...",
+	"achievement_id": "savvy",
+	"puzzles": [{
+		"id": "48f25c7e-0416-410e-b96a-c7ee19dfa110",
+		"name": "Always remember",
+		"patternsX": [
+			["UB|IE|AW"],
+			["[TUBE]*"],
+			["[BORF]."]
+		],
+		"patternsY": [
+			["[NOTAD]*"],
+			["WEL|BAL|EAR"]
+		]
+	}, {
+		"id": "7aa20819-ea88-4bb4-b7e0-022ffaaeae64",
+		"name": "Johnny",
+		"patternsX": [
+			["[BQW](PR|LE)"],
+			["[RANK]+"]
+		],
+		"patternsY": [
+			["[AWE]+"],
+			["[ALP]+K"],
+			["(PR|ER|EP)"]
+		]
+	}, {
+		"id": "cb82634d-fd6a-4d14-9fac-e7f6be244c2d",
+		"name": "Earth",
+		"patternsX": [
+			[".(.)\\1"],
+			[".*[WAY]+"],
+			["[RAM].[OH]"]
+		],
+		"patternsY": [
+			["CAT|FOR|FAT"],
+			["RY|TY\\-"],
+			["[TOWEL]*"]
+		]
+	}, {
+		"id": "837fcf0c-7cd1-46d8-8a63-9902e689b772",
+		"name": "Encyclopedia",
+		"patternsX": [
+			["[JUNDT]*"],
+			["APA|OPI|OLK"],
+			["(NA|FE|HE)[CV]"]
+		],
+		"patternsY": [
+			["[DEF][MNO]*"],
+			["[^DJNU]P[ABC]"],
+			["[ICAN]*"]
+		]
+	}, {
+		"id": "5b3bb0df-5f7c-4705-84b9-a800ea8f6455",
+		"name": "Technology",
+		"patternsX": [
+			["[^NRU](NO|ON)"],
+			["(D|FU|UF)+"],
+			["(FO|A|R)*"],
+			["(N|A)*"]
+		],
+		"patternsY": [
+			["[RUNT]*"],
+			["O.*[HAT]"],
+			["(.)*DO\\1"]
+		]
+	}]
+}, {
+	"id": "experienced",
+	"date": "2013-04-26T20:11:00.000Z",
+	"name": "Experienced",
+	"descr": "Now it's getting difficult. We are ramping up the size and complexity. Try to keep up!",
+	"achievement_id": "cocky",
+	"image": "https://regexcrossword.com/img/challenges/experienced.png",
+	"puzzles": [{
+		"id": "a59414b5-a2ec-4aa9-99e7-1c0a73d694fd",
+		"name": "Royal Dinner",
+		"patternsX": [
+			["(FI|A)+"],
+			["(YE|OT)K"],
+			["(.)[IF]+"],
+			["[NODE]+"],
+			["(FY|F|RG)+"]
+		],
+		"patternsY": [
+			["(Y|F)(.)\\2[DAF]\\1"],
+			["(U|O|I)*T[FRO]+"],
+			["[KANE]*[GIN]*"]
+		]
+	}, {
+		"id": "e9970ff7-eef5-40fe-b36d-d482be01dffa",
+		"name": "Regular Workout",
+		"patternsX": [
+			["[ARK]*O.*"],
+			["(.).*\\1N\\1"],
+			["(SOD|DO|GE)*"],
+			["[FAXUS]*"],
+			["[LOPITY]*"]
+		],
+		"patternsY": [
+			["[UGLER]*"],
+			["[CAST]*REX[PEA]*"],
+			["[SIRES]*"],
+			["(L|OFT|ON)*"],
+			["H*(AY|ED)*"]
+		]
+	}, {
+		"id": "824d4868-0688-45b4-87c5-a87ced011747",
+		"name": "We apologise for the inconvenience",
+		"patternsX": [
+			["[ABC]*(.)\\1(ME|UO)"],
+			["(.)T*E*\\1"],
+			["[HAS]*(SN|PA)"],
+			["(WE|GA|AL)T*O+"],
+			["(EG|BEEE)[WIQ]*"]
+		],
+		"patternsY": [
+			["[QA].[WEST]*"],
+			["(HE|RT|TK)*."],
+			["(RE|QR)[QUART]*"],
+			["[EUW]*S[RITE]*"],
+			["(.)(.)\\2\\1[WE]"]
+		]
+	}, {
+		"id": "2395f2d8-c2bb-4f8b-8954-1a1d597a400d",
+		"name": "Questionable",
+		"patternsX": [
+			["(!!|\\?!|;\\?)*\\?"],
+			["[<!?*#>]*"],
+			["[?*!].\\?[!<*]*"],
+			["(.)[?#]\\1\\?\\1"],
+			["[<?>][\\[!]*[?\\|#]"]
+		],
+		"patternsY": [
+			["[#?]!*[:?;]"],
+			["(.)([;?])\\1\\2\\1"],
+			["[\"!\"]*\\?!*#?"],
+			[".[;?][>!?]*"],
+			["(.)[;!\"]*!\\1"]
+		]
+	}, {
+		"id": "1b94c150-c801-46c0-9670-ce3c6e8661b1",
+		"name": "Hamlet",
+		"patternsX": [
+			["[RUTH]*(OE|EO)[RB]*"],
+			["(BG|ON|KK)+[RIF]+"],
+			["(MN|BO|FI)[EU]{2,}"],
+			["(KT|AL|ET)+G"],
+			["[OH](PR|AX|TR)+"]
+		],
+		"patternsY": [
+			["[IT](O)*(BE|AD)*\\1"],
+			["[NORMAL]+T{2}"],
+			[".*(XA|BE).*"],
+			["(EG|UL){2}[ALF]*"],
+			["[REQ]*(G|P)(.)+"]
+		]
+	}]
+}, {
+	"id": "palindromeda",
+	"date": "2013-05-02T20:11:00.000Z",
+	"name": "Palindromeda",
+	"descr": "Bend your mind around these cubistic 2D palindrome puzzles.",
+	"achievement_id": "backwards",
+	"puzzles": [{
+		"id": "0eef9c22-d204-4704-81b6-86c556b242b1",
+		"name": "Ten o'clock",
+		"patternsX": [
+			["(ENT|NTE|NET)*"],
+			["[WEAR]*"],
+			["[R-Z]E*[M-R]"]
+		],
+		"patternsY": [
+			["(T|E|N)*"],
+			["(.)*W+\\1"],
+			["[LENT]*"]
+		]
+	}, {
+		"id": "3b3b2247-8338-48ea-9c5c-b9d602d1c529",
+		"name": "Third",
+		"patternsX": [
+			["(GE|PE)[AL]*"],
+			["[EAF]+(YE|AB)*"],
+			["(QR|LE)(G|I|M|P)"]
+		],
+		"patternsY": [
+			["(L|E|D|G|Y)*"],
+			["(A|E|J)*Y.*"],
+			["[FLEDG]*"]
+		]
+	}, {
+		"id": "6dd2c6ae-8e90-4f60-bf11-310aa62f09ca",
+		"name": "Horn",
+		"patternsX": [
+			["(TS|RA|QA)*"],
+			["(AB|UT|AR)*"],
+			["(K|T)U.*(A|R)"],
+			["(AR|FS|ST)+"]
+		],
+		"patternsY": [
+			["[TRASH]*"],
+			["(FA|AB)[TUP]*"],
+			["(BA|TH|TU)*"],
+			[".*A.*"]
+		]
+	}, {
+		"id": "604a09f7-9e77-4e3a-8ed5-3d3139a69678",
+		"name": "Open the lid",
+		"patternsX": [
+			["(AP|TR|OR)*"],
+			["R[AJEQ]*"],
+			["[A-O]{2}(AR|AJ)*"],
+			["[RAMP]*(T|O)+"]
+		],
+		"patternsY": [
+			["[PARTY]*[POD]"],
+			["(JA|OK|RA){2}"],
+			["(.)*J\\1[RQ]"],
+			["[CAP]*(T|R|Y)*"]
+		]
+	}, {
+		"id": "86905c1e-68b2-436b-b4d9-869cffb2df89",
+		"name": "Time Walker",
+		"patternsX": [
+			[".*E.*"],
+			["[^P]I(IT|ME)"],
+			["(EM|FE)(IT|IP)"],
+			["(TS|PE|KE)*"]
+		],
+		"patternsY": [
+			["(EP|ST)*"],
+			["T[A-Z]*"],
+			[".M.T"],
+			[".*P.[S-X]+"]
+		]
+	}]
+}, {
+	"id": "doublecross",
+	"date": "2013-05-28T20:11:00.000Z",
+	"name": "Double Cross",
+	"descr": "Don't get cross-eyed, the clues are coming from all directions!",
+	"achievement_id": "cut",
+	"puzzles": [{
+		"id": "f0f06b00-ec0a-4572-935d-7459e2a13064",
+		"name": "Telekinesis",
+		"patternsX": [
+			["[D-HJ-M]", "[^F-KM-Z]"],
+			["[^A-RU-Z]", "[A-KS-V]"]
+		],
+		"patternsY": [
+			["[A-GN-Z]+", "[^A-DI-S]+"]
+		]
+	}, {
+		"id": "363eb9ad-836f-4aae-a8c0-56e3a652ec29",
+		"name": "GMC Vandura",
+		"patternsX": [
+			["[^MCI]+", "[AI][E\\s]"],
+			[".A", "[A\\-Z]+"],
+			["(TM|BF)", "[\\sT\\-M]+"]
+		],
+		"patternsY": [
+			["(CAT|A-T)+", "[^KI\\sP]+"],
+			["[MA\\-\\sE]+", "(M|APS|EA)*"]
+		]
+	}, {
+		"id": "3ef0777c-ac56-484d-951a-0e268188057d",
+		"name": "Bat Man",
+		"patternsX": [
+			[".*[GAF]*", "(NF|FA|A|FN)+"],
+			["(P|ET|O|TEA)*", ".*(A|E|I).*"],
+			["[RUSH]+", "[SUPER]*"]
+		],
+		"patternsY": [
+			["[ONE]*[SKA]", ".*(O|S)*"],
+			[".*(RE|ER)", "[^GOA]*"],
+			["A+[TUB]*", "[STUPA]+"]
+		]
+	}, {
+		"id": "e36245e6-ec27-4c8e-9dac-1bddba5353fb",
+		"name": "Big Mac",
+		"patternsX": [
+			["(.)\\1(.)\\2", "[PIF]+"],
+			["[C\\sOU]+", ".*[OWE]*"],
+			["[^PU\\sH]+", "(TN|LF|TF)*"]
+		],
+		"patternsY": [
+			[".[LUH]+", ".*L+"],
+			["(P|K)[^U]+", "[PUF\\s]*"],
+			[".*C+[TIF]", "[TIC]*"],
+			["(NO|ONE|ION)*", "[NOI\\sE]+"]
+		]
+	}, {
+		"id": "01b9eade-f344-4064-86f4-897bba049b13",
+		"name": "The Lektor Device",
+		"patternsX": [
+			["[^RO\\sE]*(WHE|WHO)", "[^VYS]+"],
+			["[ARE](.)[SAINT]+\\1V", ".(\\sSAI).*"],
+			[".{2}[ST\\sEL]+", "(LE|\\sT|S|OR)+"]
+		],
+		"patternsY": [
+			["(RR|FRO)*", "[FR\\sO]+"],
+			["[^SAINT]+", "(M\\s|SM)[ROSE]"],
+			["[\\sUSH]*", "(S|US)+"],
+			["[A\\sI]+", "[^AW]A.*"],
+			["[WITH]*", "[^HEAR]+"],
+			["[HEL\\s]+", ".*[FIL]"],
+			[".*", "(VE|O|VO)+"]
+		]
+	}]
+}, {
+	"id": "cities",
+	"date": "2013-08-04T20:11:00.000Z",
+	"name": "Cities",
+	"descr": "Rome wasn't built in a day you know, but see if you can complete these puzzles that fast.",
+	"achievement_id": "urbancruiser",
+	"puzzles": [{
+		"id": "449f4c0d-8894-46bf-9311-15d07b7d6c7d",
+		"name": "Pisco Sour",
+		"patternsX": [
+			["(MA|LM)", "[LAME]*"],
+			["[^MESH]+", "[^LES]+"]
+		],
+		"patternsY": [
+			["[LINE]+", "[ISLE]+"],
+			["[LAM]+", "[MALE]+"]
+		]
+	}, {
+		"id": "8ce3aedf-9f35-4096-8437-17d29593dbd5",
+		"name": "Roman Latin",
+		"patternsX": [
+			["[IDEAL\\s]+", "(DI|FI|L|O)+"],
+			["[OLD]I[PUS]", "[IOU\\s]+"],
+			["[MNOPQR]+", "(.)\\1(M|N)"]
+		],
+		"patternsY": [
+			[".*[KNIGHT]", "[^GIP]+[^MITE]"],
+			["(IN|SI|D|E)+", "[DIMN]+[NO]"],
+			["[IMUST]+", "[^SNAP\\s\\-]+"]
+		]
+	}, {
+		"id": "4588b3cc-9898-46e6-a9fc-3bc9599220c6",
+		"name": "Big and hot",
+		"patternsX": [
+			["[NAYE]*", "[YEN]+"],
+			["(EO|N\\s)", "[ETPHONE\\s]+"],
+			["[WRONG]*", "[^GONE\\s]+"],
+			["(K|R|I|M|\\s)+", "[\\sANKT]+"]
+		],
+		"patternsY": [
+			["(W\\s|NE|PS)*", "[END\\sWITH]+"],
+			["[YOU]{2}[ARK]+", ".+R.*"]
+		]
+	}, {
+		"id": "2b6c38e4-f11b-49e9-857a-1a9c782c38b6",
+		"name": "Alpha World City",
+		"patternsX": [
+			["(KA|LK)[MNO]", "[KRAMP]+"],
+			[".+(AL|P)", "U[PLAIN\\s]{2}"],
+			["[^PIM\\s]+", "[ALURE]+"],
+			["[LP].*[PR]", "[RULE\\s]+"]
+		],
+		"patternsY": [
+			["[ALK\\sU]+(P|AL|E)+", "[LUKE]{2}[LAKE\\s]+"],
+			["[ABC]\\s(LU|LP)]*", ".*[PUL]+"],
+			["(RU|MP|UR|S)+", "[RUMPUS]*"]
+		]
+	}, {
+		"id": "dab395e3-378a-4e57-bb33-557c33fd00d5",
+		"name": "Home",
+		"patternsX": [
+			["[HELP\\s]+", "[^SLIC]+\\w"],
+			["[^\\sPONG]+N", "[OCEAN\\s]+"],
+			["[SONG]+\\s", "[^SPIES]+"]
+		],
+		"patternsY": [
+			["[^SEAP]+", "[\\sCOPE]+"],
+			["[\\sPIN]E[NET]", "[^HI\\s]+"],
+			["[^ONE\\s]+", "[\\sHAG]+"],
+			["[END\\s]+", "[^SODA]+"]
+		]
+	}]
+}, {
+	"id": "volapuk",
+	"date": "2013-10-20T15:15:00.000Z",
+	"name": "Volapük",
+	"descr": "This is not a crossword, this is an exercise in pure regex prowess.",
+	"achievement_id": "volapuk",
+	"image": "https://regexcrossword.com/img/challenges/volapuk.png",
+	"puzzles": [{
+		"id": "b637f5f6-ec71-4642-b3f8-b681714e133f",
+		"name": "Bal",
+		"patternsX": [
+			["[GRAPEZ]+", "[GIN]."],
+			["[^ION\\sS]+", "[SPIK\\s]*"],
+			["(ZO|OS|OP)", "[^ZYP]+"]
+		],
+		"patternsY": [
+			["(PO|R|G|E)*", "[GRA]P+.*"],
+			["(Z|OO)[KINZS]+", "(X|Y|Z)[KIS\\s]+"]
+		]
+	}, {
+		"id": "96dc9b36-3ccd-4cbb-be04-41df7375f0e1",
+		"name": "Tel",
+		"patternsX": [
+			["M[\\DIP]*", "(M|A|P)+"],
+			["(\\\\d|\\d.)[\\\\\\/B]", "[^2O13]\\.\\\\*(A|P)?"],
+			["(Y$|YH|\\d$)+", "[HOW2Y]+"]
+		],
+		"patternsY": [
+			["(Y|\\d|M)+", "[^IB][0-3]Y"],
+			["(.H|P|.P)+", "^(P|Y)*(PA|\\.H$)"],
+			["[\\dIP\\s].+", "[PA\\\\d\\d]+"]
+		]
+	}, {
+		"id": "adeedb93-946e-465d-ac9e-aa6429d61228",
+		"name": "Kil",
+		"patternsX": [
+			["[MENSA?]+", "[^NAP\\s]+."],
+			["(A|\\?|\\?P|NP)+", "[PEN\\sA?]+"],
+			["[YOU?BE]+", ".+(Y|BE)"],
+			["(O|P)\\1\\1", "[^BAT'S?]+"]
+		],
+		"patternsY": [
+			["[^APE]+.?", "[M-Q].[A-E][M-Q]"],
+			["[SNAKE]+..", "[^NAKED].?(UO|DUO)"],
+			["(\\!|\\'|\\.|\\?)?P[YO!]+", ".+[M-W]+"]
+		]
+	}, {
+		"id": "345b9c2f-5f1c-4466-995b-539b02adf2b6",
+		"name": "Fol",
+		"patternsX": [
+			["[A5-9\\/]+\\d(\\s|:|\\.)", "[0-9:A-Z\\/\\s]+"],
+			["[T0X\\sD]+", "(0D|E\\s|\\sX)+"],
+			["[BMX'S]+N?", ".+B(SN|XN|:P)+"],
+			["[PA/\\sWE]+", "[^\\sIN\\/5]+"]
+		],
+		"patternsY": [
+			["(\\d+)[MEW]+", "[W407OM]+"],
+			["[\\/BEDS]+", ".+(D|B)+.?"],
+			["(\\d|\\/d|P|\\sS|S)+", "[SP1NE\\s]+"],
+			["[^ZO\\s\\/\\d]+", "[NA:X,S]+"]
+		]
+	}, {
+		"id": "e4e4cc1b-deb3-4a74-bb6c-0a5137727d4c",
+		"name": "Lul",
+		"patternsX": [
+			["[2TAIL\\-D]+", "[^ILYO]+"],
+			["(WE|R4|RY|M)+", ".+[MURDEW]+"],
+			["[FEAL3-5S]+", "[1ALF5$E\\s]+"],
+			["[^FA\\sT1-2]+F", "[\\dFAN$?]+"],
+			["[LO\\s\\?5-8]+", ".+\\s.+\\?"]
+		],
+		"patternsY": [
+			["(N3|TRA|N7)+", "[^OLD\\s]+"],
+			["[1LOVE2?4]+.", "(\\d+)[LA\\s$?]+"],
+			["(A|D)M[5-8$L]+", "(\\-P|5\\$|AM|Z|L)+"],
+			["[^\\s0ILAD]+", "(\\-D|\\-WE)+[^L4-9N$?]+"],
+			["[B-E]+(.)\\1.", "[FED$?]+"]
+		]
+	}]
+}, {
+	"id": "hamlet",
+	"date": "2014-04-12T12:23:00.000Z",
+	"name": "Hamlet",
+	"descr": "Though this be madness, yet there is method in't. Will you walk out of the air, my lord?",
+	"achievement_id": "playful",
+	"image": "https://regexcrossword.com/img/challenges/hamlet.png",
+	"puzzles": [{
+		"background": "https://regexcrossword.com/img/challenges/hamlet/hamlet_and_the_ghost.jpg",
+		"id": "b6265328-c88f-49ac-9052-dd2227cb325b",
+		"name": "The Ghost",
+		"patternsX": [
+			["[RQ\\s]*(N|U|M|\\s){3,}"],
+			["(N|I|E)[HOLE]{2,}A(M|N)"],
+			["[VIT]{2}[T\\s]?(STU|PLO)+"],
+			["(E|\\s)(A|S|K)*.U?[FR]"],
+			["(F|A|N)(\\s)\\1\\2[RIF](K|D)+"],
+			["(G|A|\\s)(DU|F|SET)+[WAE]+"],
+			["[ASK]?(LR|EO|\\sN)+"]
+		],
+		"patternsY": [
+			["[RA](A|E)[V\\s]\\1[NG]+\\1"],
+			["[SHI\\s]+.{2}"],
+			["(FO|UL|ED)*[DAN\\s]+"],
+			["[TORM]+ST(U|\\s|N|K)*"],
+			["(F|N)(.)[RUNT]+\\2[CL]*"],
+			["\\s[URM]*[ERD]{3,}"]
+		]
+	}, {
+		"background": "https://regexcrossword.com/img/challenges/hamlet/hamlet_and_ophelia.jpg",
+		"id": "8d22e2e9-39be-465b-b623-dbcf57219ed5",
+		"name": "Hamlet and Ophelia",
+		"patternsX": [
+			["(T|K)[POE]\\1\\1(B|E|\\s)*"],
+			["[PROH]+TS+"],
+			["(BY|\\s|K){3}(AH|T|HA)+"],
+			["(TEI|PNI|BNB)*"],
+			["(\\sO|EO|E\\s)+"],
+			["[I,T]{4}(QN|BA)*"],
+			["(.)\\1\\1[SUN]*\\1"]
+		],
+		"patternsY": [
+			["[SALT]+O(\\sB|S,|E,)+[F\\s]"],
+			["(OR\\s|T\\s|NO)*"],
+			[".(L|,|O)[,E\\sB]+"],
+			["(TH|IH|T)AT[SI\\s]*"],
+			["(\\s|I)?(T|H|F){2}E[QU\\s]{3}"],
+			["[^BAKH\\s]+(\\sB|N\\s)"]
+		]
+	}, {
+		"background": "https://regexcrossword.com/img/challenges/hamlet/hamlet_the_play.jpg",
+		"id": "40c01a03-677d-47b4-ab73-ea1b1b6e3fba",
+		"name": "The Play",
+		"patternsX": [
+			["[O-S\\sG-L]+", "(\\s\\s|OR|HO|ME)+"],
+			["[ANTIGE]+", "[A-G]N+(GI|IG|PI)"],
+			["(S\\s|\\sS|'A)+", "[RAM\\sES']+"],
+			["[PI\\sRD]+", "[^AINED]+"],
+			["(TD|L|LO|O|OH)+", "[HORTED]+"],
+			["[HITE'\\s]+", "[F-K]{2}[F-M]..?"],
+			["[MENDS]+", "(S|I|MS)[MYEND]*"]
+		],
+		"patternsY": [
+			["[HEL\\s]+P.+", ".[SEPOLI\\s]+"],
+			["[MI\/SON]+[^OLDE]{4}", ".{3,4}(\\sH|\\s|IM)+"],
+			["[IN'THE\\.\\s]+", "[IT'\\s]{4}[H.TE]+"],
+			[".[A-G]+(R|D)+[END]+", ".{4}(NI|TE|N|DE)+"]
+		]
+	}, {
+		"background": "https://regexcrossword.com/img/challenges/hamlet/ophelias_death.jpg",
+		"id": "5a6cf6a5-4578-456d-8381-56c591cfcf49",
+		"name": "Laertes",
+		"patternsX": [
+			["[PHAT\\s!]+", "(.).\\1\\1\\s."],
+			["(O\\s|E\\s)+.+", "[PHONE\\s!]+(HP|PH)+"],
+			["[ORP]+TO[^PHILA]", "(O|A)\\1.+[ELA]"],
+			["[^OLDER]{3}H.+", "[LOFHER\\s]+"],
+			[".[HORN\\s]+[^HAS]", "[^NUT\\s].[HORIS]+"],
+			["[WAU\\s]+", "[U-W].+(\\s|A)+"],
+			["[CASH]+[O,!]+", "[A-E]{2}(S,|O,|O!|,!)+"]
+		],
+		"patternsY": [
+			["[M-W\\s]+[A-D]", ".+[MUNCH']{3}"],
+			["(H|E|Y)(.)(OF|ER)\\2[WAS]{2}", "[FO\\sH]+(OP|WA|HA)"],
+			["[HASTER'\\s]+", "(R\\s|TE|S)+[^RS\\s]{2}(S|HH)?"],
+			["(A|T)[YUR\\s]\\1H[OU\\s,!]+", "[THO\\sE]+U.?"],
+			["(.).(F|O)\\2(R|I|P|\\s)+\\1\\2", "[PRO\\sE]+"],
+			["[M-Q]+[HELL]+.+", "(P|H|EL)+[AILS!]+"]
+		]
+	}, {
+		"background": "https://regexcrossword.com/img/challenges/hamlet/alas_poor_yorick.jpg",
+		"id": "107a5820-17af-41af-a57e-8e842a151e9b",
+		"name": "Memento",
+		"patternsX": [
+			["[POLEA\\s]{5}[^ASH]+", "[^IR]{2}[OWN\\s]+."],
+			[".(OR|AP|IE).[FA\\sT]+", "[LORD'.]+(PS|F\\s)+"],
+			["[^ELFR]+(E|OI|J)+", "[A?OH\u2013FIRE.]+J?"],
+			["[^OH,AI\\s:IM!]+", "(SR|LF|C.)+[END]+"],
+			["[KLIPS,CLAP\\s]+", "[^YOAS]+L[\\sHIS]+"],
+			["[\\sHY:!;]+.+(T|A|PE)\\1", "[^EAR;][IF:A?YOLK!].+"]
+		],
+		"patternsY": [
+			["[^DO.HY:PER!']+", "(A|E|I|O).\\1[SOFT,]+."],
+			["[ROPE\\s]+[YE\\s]+", "[PAST]{1}(O|U|T)+[YEAR\\s]+"],
+			["[FAST\\s,OR]+.*", "O[RICE]+(S\\?|K!)"],
+			["[^FOUR,SHE]+", "[\\s.!]+[ASH]"],
+			["[LEAF\\s]*[M-R]+", "[^PLAY?KIS]+[LOVE]*"],
+			["[^TRASH]+", "(\\sI|W\\s|OF)+"],
+			["[NITRO,FUN]+", "(N|O).(I|F)\\1\\2."],
+			["(A|E|I)[J\\s]+\\1(BE|ST)", "(S\\s|E\\s).[EAST]+"]
+		]
+	}, {
+		"background": "https://regexcrossword.com/img/challenges/hamlet/the_end.jpg",
+		"id": "ead4196d-43bb-4643-ac3e-39224fd13e95",
+		"name": "The End",
+		"patternsX": [
+			["(NR\\s|BE)+.+", "[BRIN\\W]{4}[TERN\\s]+"],
+			["[^SPYC\\s]+", "(LA|O|AA){2,3}.+"],
+			["[^ADSP]+", "[A-EQ-Z]{2}['\\s!]E[^.!Y]+"],
+			["[^BLUCE]+.", "\\W(KN|\\s|\\sK)+TO.+"],
+			["[^AYN\\s]+(E|A)", "[^GAULE,]+D[^OL]+"]
+		],
+		"patternsY": [
+			[".(\\sC|OW|\\s)+", ".{3}[COPE\\s]+"],
+			["[RACE]+(AS|KS)", "[RAYS]+C(KS|SK|Y)"],
+			["[NOA\\sE]+", "[\\sAP]+[M-W]{2}"],
+			["(BL|UF)[A\\s,HE]+", "[A-Q]{2}[^PASH]+."],
+			["[A-G][ARTH\\s.]+", "(IR|T\\.|EA|R)+"],
+			["[\\sEA]+G[OD\\s]+", "[^APE][DOG]+"],
+			["(IG|\\sN|H\\s|H)+", "\\W[GINES]+.?"],
+			["(SW|EA|T,\\s)+", "[\\sWEAT,S']+"],
+			["(H|M|E)\\1T[\\sPYS]+", "(.?)\\1(P|T\\s)+"],
+			["[O-Z][ICE\\s]+.+[PEN]", "(IN|R|CE|\\sP)+"]
+		]
+	}]
+}, {
+	"id": "hexagonal",
+	"date": "2015-05-31T19:59:15.000Z",
+	"name": "Hexagonal",
+	"descr": "Dive into the honeycomb like a busy bee and become a true beekeeper.",
+	"achievement_id": "buzzer",
+	"image": "https://regexcrossword.com/img/challenges/hexagonal.png",
+	"puzzles": [{
+		"hexagonal": true,
+		"id": "3d870dd4-9c37-4e82-bbce-033d38acf36f",
+		"name": "Buzz buzz",
+		"patternsX": [
+			["[HELP]*(Y|QU|I)?"],
+			["(VE|IL?|\\sS)*[DIES]?"]
+		],
+		"patternsY": [
+			["[HAIR]*(D|O)*"],
+			["(\\W|\\w)?[CLVST3R]*"],
+			["[HAV3N]?[REA]*"]
+		],
+		"patternsZ": [
+			["[EVA]?[MASONIC\\s]?"],
+			["[STARV3]*(O|H)?"]
+		]
+	}, {
+		"hexagonal": true,
+		"id": "07272029-2d13-4528-a3c6-e41ab69a8841",
+		"name": "Garden",
+		"patternsX": [
+			["[^ZENI$](TA|NG|LE|R)"],
+			["(F|^L|Y)?[POWER!]*"],
+			["[78NGUA\\!E]{2}"]
+		],
+		"patternsY": [
+			["[FIND]?\\$?[LAKME]"],
+			["[^PESCE]?[POS3]*."],
+			["[^OPRES!]+[^STICKO]*"]
+		],
+		"patternsZ": [
+			["[^XRAY]?[CROWN]*$"],
+			["^[D-F\\?][^CAMPED]+"],
+			["[KIP?\\!]*(BU|L|B){1,2}"]
+		],
+		"solutionMap": [0, 1, 5, 2, 6, 3, 4]
+	}, {
+		"hexagonal": true,
+		"id": "0aac7710-8428-4209-82a8-f8f1015f9262",
+		"name": "Pollen",
+		"patternsX": [
+			["\\.?[S-TALK]{2,3}\\.?"],
+			["\\.?(BI|T|E\"|\\s)+\\.?"],
+			["\\.?(SE|\\.\\s|MET|APHO|R)+\\.?"],
+			["\\.?(I|D|IO|M)+\\w?(\\1)+\\.?"],
+			["\\.?(\\s|W|EE|T)+\\W+(\\w)+\\.?"]
+		],
+		"patternsY": [
+			["\\.?.[^QUOT3\\s]{2}\\.?"],
+			["\\.?[\"EXPLAINED\"]+\\.?"],
+			["\\.?(BA|\\.B|Y\")+(\\1)(\\s)\\.?"],
+			["\\.?(D\\W|EF|IN|I.|TI.N)*\\.?"],
+			["\\.?[ORIG\\.N\\s]+\\.?"]
+		],
+		"patternsZ": [
+			["\\.?(PAS|RI|TE)+\\.?"],
+			["\\.?(LIN|GO|\\s)+[URBAN]+\\.?"],
+			["\\.?(BOM|\"S|ND\\.)+\\.?"],
+			["\\.?[\"BABIES\"]{4}\\.?"],
+			["\\.?[^NOBEAT\\?]*\\.?"]
+		],
+		"solutionMap": [5, 12, 14, 7, 0, 13, 9, 15, 1, 16, 11, 6, 2, 10, 4, 18, 3, 17, 8]
+	}, {
+		"hexagonal": true,
+		"id": "49442a2d-ec56-4dcf-981c-ba497db89e6d",
+		"name": "Stationary",
+		"patternsX": [
+			["(SA|Y|AS)[\"BUMBLE\"]+"],
+			["(\\W)(SO|AR|E)(\\1)(R|Y)+"],
+			["((E)|(V)|(ER)|(S))+[EVER]"],
+			["(\\W)(F|I|T)+(\\=O|F|I|(\\2))*"],
+			["[CLU3][TRIE\\W]+"],
+			["[BLU3][\\sKIES]*"],
+			["\\W[IAMFLYING]*"]
+		],
+		"patternsY": [
+			["[SKY][DANCER\\s]+"],
+			["[ACT|V1TI3S]+\\w"],
+			["[^SVAI\\s=]+[\"OLD\"]{2}"],
+			["((B\\WS)|ZZ|(\\s))*\\W(\\s)+"],
+			["(SO|L|I|DAR|E|T|Y)+"],
+			["[^EARS](H|I|T)(\\1)[TEAM]+"],
+			["[^IT=\"SLY?3]+"]
+		],
+		"patternsZ": [
+			["[FEV3R]+[BGE3SY]+"],
+			["(O\\W|MAX)?[STAR]+(\\W)+"],
+			["(\\W)(FL|O|A|T|S|\\W)+"],
+			["[=SAYAL1VE]+"],
+			["(NO|N)*[MOTIV3=\\s]+"],
+			["[A\\s|AN|\"ET3RTY\"]+"],
+			["[MELLO\\W]{2}[YELLO\\W]{2}"]
+		],
+		"solutionMap": [3, 4, 1, 6, 19, 20, 10, 21, 34, 7, 9, 2, 23, 36, 35, 0, 12, 26, 5, 17, 22, 25, 16, 31, 24, 11, 33, 29, 13, 27, 32, 14, 8, 18, 15, 30, 28]
+	}, {
+		"hexagonal": true,
+		"id": "2e9955c8-a87a-4e7d-8e7d-fae2e4bdbde2",
+		"name": "Winnie",
+		"patternsX": [
+			["\\W[BIT]{1}[BITT3R]+(TH|AN)*", ""],
+			["(A|N)?(\\w)?(F|I|B)?(\\2)(EO|NS)?", ""],
+			["(I|O|NS){2}[AND](.)[SEA](\\2)+", ""],
+			["[B0S\\s]{3}(I|N)(SK|R|I|B|E)+", ""],
+			["(E\\W|ER)+[PERSP3CTIVE\\s]+", ""],
+			["[^EIN](.)(.)(\\W)(\\2)(\\1)(\\5)", ""],
+			["(OR|G)+(T|H|E)*(\\W)[BRIDGER]+", ""],
+			["[JOKE]{1,3}[\\W1TH]{1,5}", ""]
+		],
+		"patternsY": [
+			["['2B']?(O|R)?['\\2BINGE']+", ""],
+			["(\\W)?(\\1)?[HONEYPOTS]+", ""],
+			["[WAFT\\s]{3,5}[WINNIE]+", ""],
+			["[THI\\s]+(S|I|NG|ER\\s){3,5}", ""],
+			["[BOOK\\s]+(O|F)?(Z|E|N)+", ""],
+			["(O|H)(.)[BROTH3R]+(\\2)(HO|BS)+", ""],
+			["(.)[STORY]+(I|SE|E)(\\1)+", ""],
+			["[ANOTHER]*[KINGDOM\\s]{1,5}", ""],
+			["(\\W)?(O|R)?[BLACK\\.RAVEN]+", ""]
+		],
+		"patternsZ": [
+			["(KV|A|VK)(\\W)(B|EE|PO|O|H)+", ""],
+			["(\\w){3}(\\W)(WE|A|R|E)*[THE]{2}", ""],
+			["(R|U|N){2}(T|O)[THEORY\\.]+", ""],
+			["\\.?[REG]{4}(V|\\s)[FIT]{2}", ""],
+			["(\\W){1,3}[A'FRIENDHIP]+", ""],
+			["(\\W){1,3}[CON\\sP1RASHE]+", ""],
+			["(\\w){1,3}(\\W)+[HISTORY?]+", ""],
+			["(TH|E){1,3}(W|IN|G|ED)+(\\W|EB)+", ""]
+		],
+		"solutionMap": [1, 8, 0, 5, 10, 11, 35, 22, 3, 19, 45, 25, 4, 9, 33, 29, 20, 18, 12, 39, 13, 17, 47, 6, 7, 21, 23, 27, 31, 48, 40, 24, 26, 34, 28, 30, 44, 32, 50, 42, 49, 38, 43, 14, 15, 16, 37, 46, 2, 36, 41, 51]
+	}]
+}]
