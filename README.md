@@ -3,9 +3,18 @@
 I'm too lazy to do https://regexcrossword.com/ so I taught a computer how to do
 them instead.
 
+Here's how it works:
+
+1. Inspect the crossword and figure out how many variables need to be filled in
+2. For each regex, generate a bunch of matching strings
+3. Constrain associated variables to generated values
+
+There are many flaws to this approach but this is the thing I could get going
+quickly.
+
 ## Installation
 
-Download from http://example.com/FIXME.
+Download from https://github.com/lvh/regex-crossword
 
 ## Usage
 
@@ -17,7 +26,7 @@ Run the project directly:
 
 Run the project's tests (they'll fail until you edit them):
 
-    $ clj -A:test:runner
+    $ clj -A:test
 
 ## Options
 
@@ -29,15 +38,19 @@ FIXME: listing of options this app accepts.
 
 ### Bugs
 
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+* This is woefully inefficient: I could also directly constrain some lvars using
+  the parse tree of the regex.
+* Because we use finite domain constraints, if this thing ever decides to use
+  the full Unicode space (or even the BMP), we're probably screwed.
+* This doesn't know how to deal with backrefs, since backrefs are constraints
+  across lvars. (Of course the logic engine knows how to do that, I just haven't
+  implemented it yet. The real trick is getting the regex part to grok it --
+  that will probably involve using the regex parse tree to directly constrain
+  lvars, as above.)
 
 ## License
 
-Copyright © 2019 FIXME
+Copyright © Laurens Van Houtven
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
