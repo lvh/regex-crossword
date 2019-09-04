@@ -40,8 +40,7 @@ FIXME: listing of options this app accepts.
 
 * This is woefully inefficient: I could also directly constrain some lvars using
   the parse tree of the regex.
-* Because we use finite domain constraints, if this thing ever decides to use
-  the full Unicode space (or even the BMP), we're probably screwed.
+
 * This doesn't know how to deal with backrefs, since backrefs are constraints
   across lvars. (Of course the logic engine knows how to do that, I just haven't
   implemented it yet. The real trick is getting the regex part to grok it --
