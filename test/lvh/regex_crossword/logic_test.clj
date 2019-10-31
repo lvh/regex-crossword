@@ -4,15 +4,17 @@
             [clojure.test :as t]
             [clojure.core.logic :as l]))
 
+(def a {:type :character :character \A})
+(def aa {:type :concatenation :elements [a a]})
+
 (t/deftest re->goal-character-test
   (t/is (= '(\A)
            (l/run* [q]
+             (rcl/re->goal a [q]))))
+  (t/is (= '(\A)
+           (l/run* [q]
+             ;; Note: parser introduces unnecessary alternations/concatenations
              (rcl/re->goal (cre/parse "A") [q])))))
-
-#_(t/deftest re->goal-concatenation-test
-  (t/is (= '((\A \A))
-           (l/run* [p q]
-             (rcl/re->goal (cre/parse "AA") [p q])))))
 
 (t/deftest re->goal-alternation-test
   (t/is (= '(\A \B)
@@ -34,9 +36,14 @@
                              {:type :character :character \C}]}
                            [q]))))
 
-  #_(t/is (= '(\A \B)
-             (l/run* [q]
-               (rcl/re->goal (cre/parse "A|B") [q])))))
+  (t/is (= '(\A \B)
+           (l/run* [q]
+             (rcl/re->goal (cre/parse "A|B") [q])))))
+
+(t/deftest re->goal-concatenation-test
+  (t/is (= '((\A \A))
+           (l/run* [p q]
+             (rcl/re->goal (cre/parse "AA") [p q])))))
 
 (t/deftest summands-test
   (t/is
