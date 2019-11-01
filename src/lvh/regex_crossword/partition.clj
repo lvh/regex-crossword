@@ -1,5 +1,7 @@
 (ns lvh.regex-crossword.partition
-  (:refer [clojure.core.logic :as l]))
+  (:require
+   [clojure.core.logic :as l]
+   [clojure.core.logic.fd :as f]))
 
 (defn reduceo
   "Given a binary operator goal, return an n-ary one.
@@ -26,7 +28,11 @@
   ;; and the result (which may be an lvar, but it's not _our_ lvar -- and in
   ;; common uses we expect it to be a normal value).
   ;;
-  ;; We don't need the butlast because map will only use the shortest coll argument.
+  ;; We don't need the butlast because map will only use the shortest coll
+  ;; argument.
+  ;;
+  ;; In the special case of a single lvar, we just unify the lvar with the
+  ;; result. For most reduce operations this is what you want.
   [binop result lvars]
   (let [results (-> lvars count (- 2) (repeatedly l/lvar) (conj result) reverse)
         lefts (cons (first lvars) results)
