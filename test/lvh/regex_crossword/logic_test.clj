@@ -19,7 +19,7 @@
   [& elems]
   {:type :concatenation :elements (convert-elems elems)})
 
-(def a (char \A))
+(def a (character \A))
 (def aa (|| a a))
 
 (t/deftest re->goal-character-test
@@ -44,15 +44,13 @@
 
   (t/is (= '(\A \B)
            (l/run* [q]
+             ;; Note: parser introduces unnecessary alternations/concatenations
              (rcl/re->goal (cre/parse "A|B") [q])))))
 
 (t/deftest re->goal-concatenation-test
   (t/is (= '((\A \A))
-           (l/run* [q]
-             (rcl/re->goal (|| \A \A)))))
-  (t/is (= '((\A \A))
            (l/run* [p q]
-             (rcl/re->goal (cre/parse "AA") [p q]))))
+             (rcl/re->goal (|| \A \A) [p q]))))
   (t/is (= '((\A \A))
            (l/run* [p q]
              (rcl/re->goal (cre/parse "AA") [p q])))))

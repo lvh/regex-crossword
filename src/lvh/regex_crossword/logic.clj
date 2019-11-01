@@ -22,11 +22,9 @@
         n-elems (count elements)
         bounds [0 n-vars]]
     (l/or*
-     (map
-      (fn [elem weights]
-        )
-      elements
-      (summands n-vars (repeat n-elems bounds))))))
+     (for [weights (summands n-vars (repeat n-elems bounds))
+           :let [lvar-groups (partition-by-weights weights lvars)]]
+       (l/and* (map re->goal elements lvar-groups))))))
 
 #_(l/run 1 [q]
     (l/and* (regex-goals #"A" [q])))
