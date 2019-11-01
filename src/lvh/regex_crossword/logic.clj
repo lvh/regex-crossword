@@ -26,6 +26,26 @@
            :let [lvar-groups (partition-by-weights weights lvars)]]
        (l/and* (map re->goal elements lvar-groups))))))
 
+(defmethod re->goal :repetition
+  [{[elem] :elements [lower upper] :bounds} lvars]
+  (let [n-vars (count lvars)
+        lower (-> lower (or 0))
+        upper (-> upper (or n-vars) (max n-vars))]
+
+    ;; Even though e.g. the empty string matches "A*", we get the lvars from the
+    ;; structure of the puzzle, so we know all lvars have to be matched.
+
+    ;; Consequence 1: 0 reps only works if there are 0 vars to match.
+    (if (zero? n-vars)
+      (if (zero? lower) l/succeed l/fail)
+      (l/or*
+       (for [reps (range (max lower 1) (inc upper))
+             ;; Consequence 2: can't have any leftovers: must match all parts
+             :when (zero? (rem n-vars reps))
+             :let [group-size (quot n-vars reps)
+                   groups (partition group-size lvars)]]
+         (l/and* (map (partial re->goal elem) groups)))))))
+
 #_(l/run 1 [q]
     (l/and* (regex-goals #"A" [q])))
 

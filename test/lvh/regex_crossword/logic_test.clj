@@ -2,7 +2,8 @@
   (:require [lvh.regex-crossword.logic :as rcl]
             [com.gfredericks.test.chuck.regexes :as cre]
             [clojure.test :as t]
-            [clojure.core.logic :as l]))
+            [clojure.core.logic :as l])
+  (:refer-clojure :exclude [+ *]))
 
 (defn character
   [c]
@@ -18,6 +19,14 @@
 (defn ||
   [& elems]
   {:type :concatenation :elements (convert-elems elems)})
+
+(defn rep
+  [lower upper & elems]
+  {:type :repetition :elements (convert-elems elems) :bounds [lower upper]})
+
+(def * (partial rep 0 nil))
+(def + (partial rep 1 nil))
+(def ? (partial rep 0 1))
 
 (def a (character \A))
 (def aa (|| a a))
@@ -54,3 +63,28 @@
   (t/is (= '((\A \A))
            (l/run* [p q]
              (rcl/re->goal (cre/parse "AA") [p q])))))
+
+(t/deftest re->goal-repetition-test
+  (t/testing "all lvars must get matched in a repetition"
+    (t/is (= '(\A)
+             (l/run* [p]
+               (rcl/re->goal (* \A) [p]))))
+
+    (t/is (= '((\A \A))
+             (l/run* [p q]
+               (rcl/re->goal (* \A) [p q]))))
+
+   (t/is (= '((\A \A \A))
+             (l/run* [p q r]
+               (rcl/re->goal (* \A) [p q r]))))
+
+    (t/is (= '((\A \A \A \A))
+             (l/run* [p q r s]
+               (rcl/re->goal (* \A) [p q r s]))))
+
+    (t/is (= '(\A)
+             (l/run* [p]
+               (rcl/re->goal (+ \A) [p]))))
+    (t/is (= '(\A)
+             (l/run* [p]
+               (rcl/re->goal (? \A) [p]))))))
