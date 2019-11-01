@@ -4,8 +4,23 @@
             [clojure.test :as t]
             [clojure.core.logic :as l]))
 
-(def a {:type :character :character \A})
-(def aa {:type :concatenation :elements [a a]})
+(defn character
+  [c]
+  {:type :character :character (char c)})
+
+(def ^:private convert-elems
+  (partial map (fn [e] (if (char? e) (character e) e))))
+
+(defn |
+  [& elems]
+  {:type :alternation :elements (convert-elems elems)})
+
+(defn ||
+  [& elems]
+  {:type :concatenation :elements (convert-elems elems)})
+
+(def a (char \A))
+(def aa (|| a a))
 
 (t/deftest re->goal-character-test
   (t/is (= '(\A)
@@ -20,27 +35,24 @@
   (t/is (= '(\A \B)
            (l/run* [q]
              ;; "A|B" with the internal concatenations removed
-             (rcl/re->goal {:type :alternation
-                            :elements
-                            [{:type :character :character \A}
-                             {:type :character :character \B}]}
-                           [q]))))
+             (rcl/re->goal (| \A \B) [q]))))
 
   (t/is (= '(\A \B \C)
            (l/run* [q]
              ;; "A|B|C" with the internal concatenations removed
-             (rcl/re->goal {:type :alternation
-                            :elements
-                            [{:type :character :character \A}
-                             {:type :character :character \B}
-                             {:type :character :character \C}]}
-                           [q]))))
+             (rcl/re->goal (| \A \B \C) [q]))))
 
   (t/is (= '(\A \B)
            (l/run* [q]
              (rcl/re->goal (cre/parse "A|B") [q])))))
 
 (t/deftest re->goal-concatenation-test
+  (t/is (= '((\A \A))
+           (l/run* [q]
+             (rcl/re->goal (|| \A \A)))))
+  (t/is (= '((\A \A))
+           (l/run* [p q]
+             (rcl/re->goal (cre/parse "AA") [p q]))))
   (t/is (= '((\A \A))
            (l/run* [p q]
              (rcl/re->goal (cre/parse "AA") [p q])))))
