@@ -1,20 +1,16 @@
 (ns lvh.regex-crossword.logic
   (:require
    [clojure.core.logic :as l]
-   [clojure.core.logic.fd :as f]
+   [lvh.regex-crossword.partition :refer [summands partition-by-weights]]
    [com.gfredericks.test.chuck.regexes :as cre]))
-
-(declare summands)
 
 (defmulti re->goal :type)
 
 (defmethod re->goal :character
   [{:keys [character]} [lvar :as lvars]]
   (if (-> lvars count (= 1))
-
-    l/fail)
-  (l/== character lvar)
-  )
+    (l/== character lvar)
+    l/fail))
 
 (defmethod re->goal :alternation
   [{:keys [elements]} lvars]
@@ -77,18 +73,6 @@
 
 
 
-;; => ([2 3 5] [3 2 5] [2 4 4] [2 5 3] [4 2 4] [3 3 4] [3 4 3] [5 2 3] [4 3 3] [3 5 2] [4 4 2] [5 3 2])
-
-#_(l/run 10 [a b c]
-  (f/in a b c (f/interval 10))
-  (sumo 10 [a b c]))
-
-#_(l/run 10 [a b c]
-  (concato '(p q r s) [a b c]))
-
-
-#_(partition-by-weights [1 2 3] '(a b c d e f))
-
 
 (def dom
-  (->> (range (int \A) (inc (int \Z))) (map (comp symbol str char))))
+  (->> (range (int \A) (inc (int \Z))) (map char)))

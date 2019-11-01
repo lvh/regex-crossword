@@ -44,11 +44,3 @@
   (t/is (= '((\A \A))
            (l/run* [p q]
              (rcl/re->goal (cre/parse "AA") [p q])))))
-
-(t/deftest summands-test
-  (t/is
-   (= #{[1 1 1]}
-      (set (rcl/summands 3 [[1 10] [1 10] [1 10]]))))
-  (t/is
-   (= #{[7 5 3] [8 5 2] [7 6 2] [7 7 1] [8 6 1]}
-      (set (rcl/summands 15 [[7 8] [5 8] [1 5]])))))
