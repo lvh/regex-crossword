@@ -59,6 +59,7 @@
       (sumo total lvars))))
 
 (defn partition-by-weights
+  "Partition given coll into colls of length given by `weights`."
   [weights coll]
   (loop [[weight & rest-weights] weights
          coll coll
