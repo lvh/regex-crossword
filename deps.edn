@@ -1,9 +1,19 @@
 {:paths ["resources" "src"]
  :deps {org.clojure/clojure {:mvn/version "1.10.1"}
+
+        ;; Parsing regexes (and some generative testing)
         org.clojure/test.check {:mvn/version "0.10.0"}
         com.gfredericks/test.chuck {:mvn/version "0.2.10"}
-        cheshire {:mvn/version "5.9.0"}
+
+        ;; Actually solving puzzles
         org.clojure/core.logic {:mvn/version "0.8.11"}
+
+        ;; Downloading and parsing puzzles
+        cheshire {:mvn/version "5.9.0"}
+        camel-snake-kebab {:mvn/version "0.4.0"}
+        org.martinklepsch/clj-http-lite {:mvn/version "0.4.1"}
+
+        ;; Typically end up needing this, so...
         com.rpl/specter {:mvn/version "1.1.2"}
         eidolon {:mvn/version "0.1.0"}}
  :aliases
