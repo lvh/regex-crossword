@@ -24,7 +24,8 @@
 
 (t/deftest ^:generative sumo-generative-test
   (checking
-   "sumo produces numbers that add up to the right total" 100
+   "sumo produces numbers that add up to the right total"
+   {:num-tests 10 :max-size 10}
    [total gen/nat
     :let [sums (l/run* [a b c]
                  (f/in a b c (f/interval total))
@@ -42,7 +43,8 @@
 
 (t/deftest ^:generative summands-generative-test
   (checking
-   "summands creates numbers that add up to the right total" 100
+   "summands creates numbers that add up to the right total"
+   {:num-tests 10 :max-size 10}
    [total gen/nat
     bounds (gen/vector
             (gen/fmap
