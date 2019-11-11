@@ -59,8 +59,9 @@
          cols (apply mapv vector rows)
          pattern-goals (map
                         (fn [patterns lvars]
-                          (l/and*
-                           (map #(-> % cre/parse (re->goal lvars)) patterns)))
+                          (->> patterns
+                               (map (fn [pattern] (-> pattern cre/parse (re->goal lvars))))
+                               (l/and*)))
                         (concat x-patterns y-patterns)
                         (concat cols rows))]
      (->> (l/run n [q]
