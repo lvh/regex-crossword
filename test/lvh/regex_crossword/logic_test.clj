@@ -103,4 +103,4 @@
            (rcl/solve {:x-patterns [["A"]] :y-patterns [["A|B"]]})))
 
   (t/is (= [[\A \B]]
-           (rcl/solve {:x-patterns [["A"] ["B"]] :y-patterns [["A|B"]]}))))
+           (rcl/solve {:x-patterns [["A"] ["B"]] :y-patterns [["A*B*"]]}))))
