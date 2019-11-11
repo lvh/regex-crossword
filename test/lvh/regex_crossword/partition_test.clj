@@ -53,8 +53,6 @@
    (t/is (every? #(= total (apply + %)) summands))
    (t/is (every? #(= (count bounds) (count %)) summands))))
 
-(rcp/summands 1 [[0 0]])
-
 (t/deftest partition-by-weights-test
   (t/is (= '((a) (b c) (d e f))
            (rcp/partition-by-weights [1 2 3] '(a b c d e f)))))
