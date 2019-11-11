@@ -31,7 +31,7 @@
 (def a (character \A))
 (def aa (|| a a))
 
-(t/deftest re->goal-character-test
+(t/deftest re->goal-character-tests
   (t/is (= '(\A)
            (l/run* [q]
              (rcl/re->goal a [q]))))
@@ -56,7 +56,7 @@
              ;; Note: parser introduces unnecessary alternations/concatenations
              (rcl/re->goal (cre/parse "A|B") [q])))))
 
-(t/deftest re->goal-concatenation-test
+(t/deftest re->goal-concatenation-tests
   (t/is (= '((\A \A))
            (l/run* [p q]
              (rcl/re->goal (|| \A \A) [p q]))))
@@ -64,7 +64,7 @@
            (l/run* [p q]
              (rcl/re->goal (cre/parse "AA") [p q])))))
 
-(t/deftest re->goal-repetition-test
+(t/deftest re->goal-repetition-tests
   (t/testing "all lvars must get matched in a repetition"
     (t/is (= '(\A)
              (l/run* [p]
