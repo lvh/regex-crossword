@@ -11,7 +11,7 @@
 
 (t/deftest sumo-test
   (t/is
-   (= #{[10]}
+   (= #{10}
       (set (l/run 10 [a]
              (f/in a (f/interval 10))
              (rcp/sumo 10 [a])))))

@@ -34,10 +34,12 @@
   ;; In the special case of a single lvar, we just unify the lvar with the
   ;; result. For most reduce operations this is what you want.
   [binop result lvars]
-  (let [results (-> lvars count (- 2) (repeatedly l/lvar) (conj result) reverse)
-        lefts (cons (first lvars) results)
-        rights (rest lvars)]
-    (l/and* (map binop lefts rights results))))
+  (if (-> lvars count (= 1))
+    (l/== (first lvars) result)
+    (let [results (-> lvars count (- 2) (repeatedly l/lvar) (conj result) reverse)
+          lefts (cons (first lvars) results)
+          rights (rest lvars)]
+      (l/and* (map binop lefts rights results)))))
 
 (def sumo (partial reduceo f/+))
 (def concato (partial reduceo l/appendo))
