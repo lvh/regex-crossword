@@ -68,5 +68,5 @@
          remaining coll]
     (if (some? weight)
       (let [[chunk remaining] (split-at weight remaining)]
-        (recur rest-weights remaining (conj chunks chunk)))
+        (recur rest-weights (conj chunks chunk) remaining))
       chunks)))
