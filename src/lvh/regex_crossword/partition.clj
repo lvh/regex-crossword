@@ -62,11 +62,9 @@
   "Partition given coll into colls of length given by `weights`."
   [weights coll]
   (loop [[weight & rest-weights] weights
-         coll coll
-         acc []]
+         chunks []
+         remaining coll]
     (if (some? weight)
-      (recur
-       rest-weights
-       (drop weight coll)
-       (conj acc (take weight coll)))
-      acc)))
+      (let [[chunk remaining] (split-at weight remaining)]
+        (recur rest-weights remaining (conj chunks chunk)))
+      chunks)))
