@@ -67,9 +67,3 @@
      (->> (l/run n [q]
             (l/== q vars)
             (l/and* pattern-goals))))))
-
-#_(solve {:x-patterns [["A"]] :y-patterns [["A"]]})
-#_(solve {:x-patterns [["X"]] :y-patterns [["X"]]})
-#_(solve {:x-patterns [["A"]] :y-patterns [["A"]]} 10)
-#_(solve {:x-patterns [["A"]] :y-patterns [["A|B"]]})
-#_(solve {:x-patterns [["A"] ["B"]] :y-patterns [["A|B"]]})

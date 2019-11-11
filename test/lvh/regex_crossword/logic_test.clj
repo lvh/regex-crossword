@@ -88,3 +88,19 @@
     (t/is (= '(\A)
              (l/run* [p]
                (rcl/re->goal (? \A) [p]))))))
+
+(t/deftest solve-tests
+  (t/is (= [[\A]]
+           (rcl/solve {:x-patterns [["A"]] :y-patterns [["A"]]})))
+
+  (t/is (= [[\X]]
+           (rcl/solve {:x-patterns [["X"]] :y-patterns [["X"]]})))
+
+  (t/is (= [[\A]]
+           (rcl/solve {:x-patterns [["A"]] :y-patterns [["A"]]} 10)))
+
+  (t/is (= [[\A]]
+           (rcl/solve {:x-patterns [["A"]] :y-patterns [["A|B"]]})))
+
+  (t/is (= [[\A \B]]
+           (rcl/solve {:x-patterns [["A"] ["B"]] :y-patterns [["A|B"]]}))))
