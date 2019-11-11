@@ -65,5 +65,5 @@
                         (concat x-patterns y-patterns)
                         (concat cols rows))]
      (->> (l/run n [q]
-            (l/== q vars)
+            (l/== q rows)
             (l/and* pattern-goals))))))
