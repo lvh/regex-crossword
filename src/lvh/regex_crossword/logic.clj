@@ -52,17 +52,17 @@
 (defn solve
   ([puzzle]
    (solve puzzle nil))
-  ([{:keys [x-patterns y-patterns] :as puzzle} {:keys [n] :as opts :or {n 10}}]
-   (let [n-vars (* (count x-patterns) (count y-patterns))
+  ([{:keys [patterns-x patterns-y] :as puzzle} {:keys [n] :as opts :or {n 10}}]
+   (let [n-vars (* (count patterns-x) (count patterns-y))
          vars (repeatedly n-vars l/lvar)
-         rows (partition (count x-patterns) vars)
+         rows (partition (count patterns-x) vars)
          cols (apply mapv vector rows)
          pattern-goals (map
                         (fn [patterns lvars]
                           (->> patterns
                                (map (fn [pattern] (-> pattern cre/parse (re->goal lvars))))
                                (l/and*)))
-                        (concat x-patterns y-patterns)
+                        (concat patterns-x patterns-y)
                         (concat cols rows))]
      (->> (l/run n [q]
             (l/== q rows)

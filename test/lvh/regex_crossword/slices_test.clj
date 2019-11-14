@@ -6,9 +6,9 @@
   ;; built with https://regexcrossword.com/puzzlebuilder
   (t/are [rows cols counts] (= counts
                                (slices/hex-row-counts
-                                {:x-patterns (repeat cols [])
-                                 :y-patterns (repeat rows [])
-                                 :z-patterns (repeat cols [])}))
+                                {:patterns-x (repeat cols [])
+                                 :patterns-y (repeat rows [])
+                                 :patterns-z (repeat cols [])}))
     1 1 [1]
     1 2 [2]
     3 2 [1 2 1]
