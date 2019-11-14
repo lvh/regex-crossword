@@ -45,9 +45,6 @@
                    groups (partition group-size lvars)]]
          (l/and* (map (partial re->goal elem) groups)))))))
 
-#_(def dom
-  (->> (range (int \A) (inc (int \Z))) (map char)))
-#_(l/everyg (fn [v] (l/membero v dom)) vars)
 
 (defn solve
   ([puzzle]
