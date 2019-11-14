@@ -89,6 +89,78 @@
              (l/run* [p]
                (rcl/re->goal (? \A) [p]))))))
 
+(t/deftest re->goal-class-tests
+  (t/testing "class-base"
+    (t/is (= '(\A)
+             (l/run* [p]
+               (rcl/re->goal {:type :class-base :chars #{\A}} [p])))))
+
+  (t/testing "class-union"
+    (t/is (= '(\A)
+             (l/run* [p]
+               (rcl/re->goal
+                {:type :class-union
+                 :elements [{:type :class-base :chars #{\A}}]}
+                [p]))))
+
+    (t/is (= '(\A \B)
+             (l/run* [p]
+               (rcl/re->goal
+                {:type :class-union
+                 :elements [{:type :class-base :chars #{\A}}
+                            {:type :class-base :chars #{\B}}]}
+                [p])))))
+
+  (t/testing "class-intersection"
+    (t/is (= '(\A)
+             (l/run* [p]
+               (rcl/re->goal
+                {:type :class-intersection
+                 :elements [{:type :class-base :chars #{\A}}]}
+                [p]))))
+
+    (t/is (= '(\A)
+             (l/run* [p]
+               (rcl/re->goal
+                {:type :class-intersection
+                 :elements [{:type :class-base :chars #{\A}}
+                            {:type :class-base :chars #{\A}}]}
+                [p]))))
+
+    (t/is (= '()
+             (l/run* [p]
+               (rcl/re->goal
+                {:type :class-intersection
+                 :elements [{:type :class-base :chars #{\A}}
+                            {:type :class-base :chars #{\B}}]}
+                [p])))))
+
+  (t/testing "simple examples from parser, no ranges or negation"
+    (t/is (= '(\A)
+             (l/run* [q]
+               (-> "[A]" cre/parse (rcl/re->goal [q])))))
+    (t/is (= '(\A \B)
+             (l/run* [q]
+               (-> "[AB]" cre/parse (rcl/re->goal [q]))))))
+
+  (t/testing "ranges"
+    (t/is (= '(\A \B \C \D \E \F)
+             (l/run* [q]
+               (-> "[A-F]" cre/parse (rcl/re->goal [q])))))
+    (t/is (= #{\A \B \C \D \E \F \H \I \J}
+             (set
+              (l/run* [q]
+                (-> "[A-FH-J]" cre/parse (rcl/re->goal [q])))))))
+
+  (t/testing "simple classes"
+    (t/is (= '(\A \B \C \D \E \F)
+             (l/run* [q]
+               (-> "[A-F]" cre/parse (rcl/re->goal [q])))))
+    (t/is (= #{\A \B \C \D \E \F \H \I \J}
+             (set
+              (l/run* [q]
+                (-> "[A-FH-J]" cre/parse (rcl/re->goal [q]))))))))
+
 (t/deftest solve-tests
   (t/is (= [[[\A]]]
            (rcl/solve {:x-patterns [["A"]] :y-patterns [["A"]]})))

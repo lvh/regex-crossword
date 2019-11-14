@@ -45,6 +45,34 @@
                    groups (partition group-size lvars)]]
          (l/and* (map (partial re->goal elem) groups)))))))
 
+(defmethod re->goal :class
+  [{:keys [elements]} lvars]
+  ;; Ostensibly only ever one element in elements, but writing defensively.
+  (l/and* (map #(re->goal % lvars) elements)))
+
+(defmethod re->goal :class-base
+  [{:keys [chars]} [lvar :as lvars]]
+  ;; It appears class-base will only ever have one char, but I'm writing this
+  ;; defensively since I have no proof I've exhausted all the parser cases.
+  (if (-> lvars count (= 1))
+    (l/membero lvar (vec chars))
+    l/fail))
+
+(defmethod re->goal :class-union
+  [{:keys [elements]} lvars]
+  (l/or* (map #(re->goal % lvars) elements)))
+
+(defmethod re->goal :class-intersection
+  [{:keys [elements]} lvars]
+  (l/and* (map #(re->goal % lvars) elements)))
+
+(defmethod re->goal :range
+  [{:keys [elements]} [lvar :as lvars]]
+  (if (-> lvars count (= 1))
+    (let [[lower upper] (map (comp int :character) elements)
+          chars (map char (range lower (inc upper)))]
+      (l/membero lvar chars))
+    l/fail))
 
 (defn solve
   ([puzzle]
