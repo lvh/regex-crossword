@@ -89,6 +89,6 @@
                                (l/and*)))
                         (concat patterns-x patterns-y)
                         (concat cols rows))]
-     (->> (l/run n [q]
-            (l/== q rows)
-            (l/and* pattern-goals))))))
+     (l/run n [q]
+       (l/== q rows)
+       (l/and* pattern-goals)))))
