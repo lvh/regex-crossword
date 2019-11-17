@@ -153,13 +153,44 @@
                 (-> "[A-FH-J]" cre/parse (rcl/re->goal [q])))))))
 
   (t/testing "simple classes"
-    (t/is (= '(\A \B \C \D \E \F)
+    (t/is (= '(\space)
              (l/run* [q]
-               (-> "[A-F]" cre/parse (rcl/re->goal [q])))))
-    (t/is (= #{\A \B \C \D \E \F \H \I \J}
-             (set
-              (l/run* [q]
-                (-> "[A-FH-J]" cre/parse (rcl/re->goal [q]))))))))
+               (-> "\\s" cre/parse (rcl/re->goal [q]))))))
+
+  (t/testing "negation"
+    (t/is (= '(\A)
+             (l/run* [q]
+               (-> "[ABC]" cre/parse (rcl/re->goal [q]))
+               (-> "[^B-C]" cre/parse (rcl/re->goal [q])))))
+    (t/is (= '(\G)
+             (l/run* [q]
+               (-> "[A-G]" cre/parse (rcl/re->goal [q]))
+               (-> "[^A-F]" cre/parse (rcl/re->goal [q])))))
+
+    (t/is (= '(\D)
+             (l/run* [q]
+               (-> "[A-G]" cre/parse (rcl/re->goal [q]))
+               (-> "[^A-C]" cre/parse (rcl/re->goal [q]))
+               (-> "[^EFG]" cre/parse (rcl/re->goal [q])))))
+
+    (t/testing "goals in opposite order"
+      ;; This is an interesting test because l/nafc, once used in the
+      ;; implementation of :class-negation, only works if the lvars are ground.
+      ;; In the first test they're only ground because we ground them
+      ;; beforehand. This test checks that the implementation does not require
+      ;; that (somehow -- see impl for details).
+      (t/is (= '(\G)
+               (l/run* [q]
+                 (-> "[^A-F]" cre/parse (rcl/re->goal [q]))
+                 (-> "[A-G]" cre/parse (rcl/re->goal [q]))))))))
+
+(t/deftest enumerate-class-tests
+  (let [enum (fn [pattern]
+               (-> pattern cre/parse :elements first :elements first rcl/enumerate-class))]
+    (t/is (= #{\A} (enum "[A]")))
+    (t/is (= #{\A \B \C} (enum "[ABC]")))
+    (t/is (= #{\A \B \C} (enum "[A-C]")))
+    (t/is (= #{\A \B \C \G \H \I} (enum "[A-CG-I]")))))
 
 (t/deftest solve-tests
   (t/is (= [[[\A]]]
@@ -176,3 +207,10 @@
 
   (t/is (= [[[\A \B]]]
            (rcl/solve {:x-patterns [["A"] ["B"]] :y-patterns [["A*B*"]]}))))
+
+#_(cre/parse "\\s") ;; note: extra backslash is for string literal escape, this is really just "\s"
+#_{:type :alternation, :elements ({:type :concatenation, :elements ({:type :class, :simple-class \s})})}
+
+
+
+(cre/parse "[^A-F]")

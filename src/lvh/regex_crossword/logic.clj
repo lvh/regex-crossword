@@ -2,7 +2,8 @@
   (:require
    [clojure.core.logic :as l]
    [lvh.regex-crossword.partition :refer [summands partition-by-weights]]
-   [com.gfredericks.test.chuck.regexes :as cre]))
+   [com.gfredericks.test.chuck.regexes :as cre]
+   [clojure.set :as set]))
 
 (defmulti re->goal :type)
 
@@ -46,17 +47,23 @@
          (l/and* (map (partial re->goal elem) groups)))))))
 
 (defmethod re->goal :class
-  [{:keys [elements]} lvars]
+  [{:keys [elements simple-class]} [lvar :as lvars]]
   ;; Ostensibly only ever one element in elements, but writing defensively.
-  (l/and* (map #(re->goal % lvars) elements)))
+  (cond
+    (-> lvars count (not= 1))
+    l/fail
+
+    (some? simple-class)
+    (l/membero lvar (case simple-class \s [\space]))
+
+    :else
+    (l/and* (map #(re->goal % lvars) elements))))
 
 (defmethod re->goal :class-base
-  [{:keys [chars]} [lvar :as lvars]]
+  [{:keys [chars]} [lvar]]
   ;; It appears class-base will only ever have one char, but I'm writing this
   ;; defensively since I have no proof I've exhausted all the parser cases.
-  (if (-> lvars count (= 1))
-    (l/membero lvar (vec chars))
-    l/fail))
+  (l/membero lvar (vec chars)))
 
 (defmethod re->goal :class-union
   [{:keys [elements]} lvars]
@@ -67,12 +74,32 @@
   (l/and* (map #(re->goal % lvars) elements)))
 
 (defmethod re->goal :range
-  [{:keys [elements]} [lvar :as lvars]]
-  (if (-> lvars count (= 1))
-    (let [[lower upper] (map (comp int :character) elements)
-          chars (map char (range lower (inc upper)))]
-      (l/membero lvar chars))
-    l/fail))
+  [range [lvar]]
+  (->> range enumerate-class vec (l/membero lvar)))
+
+(declare enumerate-class)
+
+(defmethod re->goal :class-negation
+  [{:keys [elements]} [lvar]]
+  (l/and*
+   (for [not-it (enumerate-class {:type :class :elements elements})]
+     (l/!= not-it lvar))))
+
+(defn enumerate-class
+  [{:keys [type elements chars simple-class] :as class-spec}]
+  (case type
+    (:class :class-union)
+    (apply set/union (map enumerate-class elements))
+
+    :class-intersection
+    (apply set/intersection (map enumerate-class elements))
+
+    :class-base
+    (set chars)
+
+    :range
+    (let [[lower upper] (map (comp int :character) elements)]
+      (into #{} (map char (range lower (inc upper)))))))
 
 (defn solve
   ([puzzle]
