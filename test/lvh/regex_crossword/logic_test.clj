@@ -207,10 +207,3 @@
 
   (t/is (= [[[\A \B]]]
            (rcl/solve {:x-patterns [["A"] ["B"]] :y-patterns [["A*B*"]]}))))
-
-#_(cre/parse "\\s") ;; note: extra backslash is for string literal escape, this is really just "\s"
-#_{:type :alternation, :elements ({:type :concatenation, :elements ({:type :class, :simple-class \s})})}
-
-
-
-(cre/parse "[^A-F]")
