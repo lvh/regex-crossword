@@ -13,7 +13,9 @@
         camel-snake-kebab {:mvn/version "0.4.0"}
         org.martinklepsch/clj-http-lite {:mvn/version "0.4.1"}
 
-        ;; Typically end up needing this, so...
+        cli-matic {:mvn/version "0.3.9"}
+
+        ;; Typically end up needing this, so... TODO revisit
         com.rpl/specter {:mvn/version "1.1.2"}
         eidolon {:mvn/version "0.1.0"}}
  :aliases
