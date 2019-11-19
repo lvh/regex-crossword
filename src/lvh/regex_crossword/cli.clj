@@ -22,11 +22,18 @@
   (case puzzle-type
     "builtin"
     (let [set-id? (->> args first re-pattern (partial re-matches))
-          puzzle-num (-> args second (Integer/parseInt))]
-      (doseq [puzzle (sr/select
-                      [sr/ALL (comp set-id? :id) :puzzles (sr/nthpath puzzle-num)]
-                      @data/builtin-puzzles)]
-        (println "Solving" puzzle)
+          puzzle-num-path (let [num-spec (second args)]
+                            (if (= num-spec "*")
+                              sr/ALL
+                              (-> num-spec (Integer/parseInt) (sr/nthpath))))]
+      (doseq [[set-id puzzle] (sr/select
+                            [sr/ALL
+                             (sr/collect-one :id)
+                             (comp set-id? :id)
+                             :puzzles
+                             puzzle-num-path]
+                            @data/builtin-puzzles)]
+        (println "Solving" puzzle "from set" set-id)
         (doseq [[solution n] (map vector (solve puzzle) (range))]
           (println "Solution #" n)
           (println (display solution))
@@ -41,3 +48,5 @@
 #_(-main "builtin" "tutorial" "5")
 #_(-main "builtin" "tutorial" "6") ;; backrefs
 #_(-main "builtin" "tutorial" "7")
+
+#_(-main "builtin" ".*" "*")
