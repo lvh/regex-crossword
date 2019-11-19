@@ -194,16 +194,16 @@
 
 (t/deftest solve-tests
   (t/is (= [[[\A]]]
-           (rcl/solve {:x-patterns [["A"]] :y-patterns [["A"]]})))
+           (rcl/solve {:patterns-x [["A"]] :patterns-y [["A"]]})))
 
   (t/is (= [[[\X]]]
-           (rcl/solve {:x-patterns [["X"]] :y-patterns [["X"]]})))
+           (rcl/solve {:patterns-x [["X"]] :patterns-y [["X"]]})))
 
   (t/is (= [[[\A]]]
-           (rcl/solve {:x-patterns [["A"]] :y-patterns [["A"]]} 10)))
+           (rcl/solve {:patterns-x [["A"]] :patterns-y [["A"]]} 10)))
 
   (t/is (= [[[\A]]]
-           (rcl/solve {:x-patterns [["A"]] :y-patterns [["A|B"]]})))
+           (rcl/solve {:patterns-x [["A"]] :patterns-y [["A|B"]]})))
 
   (t/is (= [[[\A \B]]]
-           (rcl/solve {:x-patterns [["A"] ["B"]] :y-patterns [["A*B*"]]}))))
+           (rcl/solve {:patterns-x [["A"] ["B"]] :patterns-y [["A*B*"]]}))))
