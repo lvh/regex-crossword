@@ -206,4 +206,12 @@
            (rcl/solve {:patterns-x [["A"]] :patterns-y [["A|B"]]})))
 
   (t/is (= [[[\A \B]]]
-           (rcl/solve {:patterns-x [["A"] ["B"]] :patterns-y [["A*B*"]]}))))
+           (rcl/solve {:patterns-x [["A"] ["B"]] :patterns-y [["A*B*"]]})))
+
+  (t/testing "groups and backrefs"
+    (t/is (=
+           '(((\A) (\A)))
+           (rcl/solve {:patterns-x [["(A)\\1"]] :patterns-y [["A"] ["A"]]})))
+    (t/is (=
+           '(((\A) (\A) (\A)))
+           (rcl/solve {:patterns-x [["(A)\\1\\1"]] :patterns-y [["A"] ["A"] ["A"]]})))))
