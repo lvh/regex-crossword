@@ -73,11 +73,11 @@
   [{:keys [elements]} lvars]
   (l/and* (map #(re->goal % lvars) elements)))
 
+(declare enumerate-class)
+
 (defmethod re->goal :range
   [range [lvar]]
   (->> range enumerate-class vec (l/membero lvar)))
-
-(declare enumerate-class)
 
 (defmethod re->goal :class-negation
   [{:keys [elements]} [lvar]]
