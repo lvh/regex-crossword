@@ -49,4 +49,7 @@
 #_(-main "builtin" "tutorial" "6") ;; backrefs
 #_(-main "builtin" "tutorial" "7")
 
-#_(-main "builtin" ".*" "*")
+#_(-main "builtin" "doublecross" "*")
+#_(-main "builtin" "palindromeda" "*")
+#_(-main "builtin" "cities" "*")
+#_(-main "builtin" "hamlet" "*")
