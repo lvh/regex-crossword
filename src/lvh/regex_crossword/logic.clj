@@ -3,7 +3,8 @@
    [clojure.core.logic :as l]
    [lvh.regex-crossword.partition :refer [summands partition-by-weights]]
    [com.gfredericks.test.chuck.regexes :as cre]
-   [clojure.set :as set]))
+   [clojure.set :as set]
+   [clojure.string :as str]))
 
 (defmulti re->goal (fn [pattern lvars ctx] (:type pattern)))
 
@@ -46,6 +47,17 @@
                     (l/and* (map (partial re->goal elem) groups (repeat ctx))))]
         (if (seq goals) (l/or* goals) l/fail)))))
 
+(def digits (->> (range 10) (mapcat str)))
+(def upper-letters (map char (range (int \A) (inc (int \Z)))))
+(def simple-class-members
+  {\s [\space]
+   \d digits
+   \w (concat [\_] upper-letters digits)})
+
+(defn not-membero
+  [x l]
+  (l/and* (for [y l] (l/!= x y))))
+
 (defmethod re->goal :class
   [{:keys [elements simple-class]} [lvar :as lvars] ctx]
   ;; Ostensibly only ever one element in elements, but writing defensively.
@@ -53,8 +65,13 @@
     (-> lvars count (not= 1))
     l/fail
 
-    (some? simple-class)
-    (l/membero lvar (case simple-class \s [\space]))
+    (= :dot simple-class)
+    l/succeed
+
+    (char? simple-class)
+    (let [goal (if (Character/isUpperCase simple-class) not-membero l/membero)
+          members (-> simple-class str/lower-case first simple-class-members)]
+      (goal lvar members))
 
     :else
     (l/and* (map #(re->goal % lvars ctx) elements))))
