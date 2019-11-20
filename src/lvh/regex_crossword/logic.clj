@@ -37,14 +37,14 @@
     ;; Consequence 1: 0 reps only works if there are 0 vars to match.
     (if (zero? n-vars)
       (if (zero? lower) l/succeed l/fail)
-      (l/or*
-       (for [reps (range (max lower 1) (inc upper))
-             ;; Consequence 2: can't have any leftovers: must match all parts,
-             ;; group size must be a divisor of the number of lvars
-             :when (zero? (rem n-vars reps))
-             :let [group-size (quot n-vars reps)
-                   groups (partition group-size lvars)]]
-         (l/and* (map (partial re->goal elem) groups (repeat ctx))))))))
+      (let [goals (for [reps (range (max lower 1) (inc upper))
+                        ;; Consequence 2: can't have any leftovers: must match all parts,
+                        ;; group size must be a divisor of the number of lvars
+                        :when (zero? (rem n-vars reps))
+                        :let [group-size (quot n-vars reps)
+                              groups (partition group-size lvars)]]
+                    (l/and* (map (partial re->goal elem) groups (repeat ctx))))]
+        (if (seq goals) (l/or* goals) l/fail)))))
 
 (defmethod re->goal :class
   [{:keys [elements simple-class]} [lvar :as lvars] ctx]
