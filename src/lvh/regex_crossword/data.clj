@@ -12,7 +12,9 @@
 
 (defn ^:private get!
   [url]
-  (-> (http/get url {:headers ff-req-headers}) :body (json/parse-string csk/->kebab-case-keyword)))
+  (-> (http/get url {:headers ff-req-headers})
+      :body
+      (json/parse-string csk/->kebab-case-keyword)))
 
 (defn get-player-puzzle!
   "Download a specific player puzzle."
