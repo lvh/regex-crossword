@@ -12,12 +12,8 @@
         cheshire {:mvn/version "5.9.0"}
         camel-snake-kebab {:mvn/version "0.4.0"}
         org.martinklepsch/clj-http-lite {:mvn/version "0.4.1"}
-
-        cli-matic {:mvn/version "0.3.9"}
-
-        ;; Typically end up needing this, so... TODO revisit
-        com.rpl/specter {:mvn/version "1.1.2"}
-        eidolon {:mvn/version "0.1.0"}}
+        ;; CLI puzzle selection
+        com.rpl/specter {:mvn/version "1.1.2"}}
  :aliases
  {:test {:main-opts ["-m" "kaocha.runner"]
          :extra-paths ["test-resources" "test"]
