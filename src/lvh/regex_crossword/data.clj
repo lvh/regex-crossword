@@ -30,5 +30,6 @@
   "A cached version of the builtin puzzles. Will attempt to load as a resource and
   download as a fallback."
   (delay
-    (-> "challenges.json" io/resource io/reader (json/parse-stream csk/->kebab-case))
-    (get-builtin-puzzles!)))
+    (if-some [challenges (io/resource "challenges.json")]
+      (-> challenges io/reader (json/parse-stream csk/->kebab-case-keyword))
+      (get-builtin-puzzles!))))
