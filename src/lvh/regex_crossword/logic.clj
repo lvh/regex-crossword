@@ -69,7 +69,7 @@
     l/succeed
 
     (char? simple-class)
-    (let [goal (if (Character/isUpperCase simple-class) not-membero l/membero)
+    (let [goal (if (Character/isUpperCase ^char simple-class) not-membero l/membero)
           members (-> simple-class str/lower-case first simple-class-members)]
       (goal lvar members))
 

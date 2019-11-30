@@ -1,5 +1,5 @@
 {:paths ["resources" "src"]
- :deps {org.clojure/clojure {:mvn/version "1.10.1"}
+ :deps {org.clojure/clojure {:mvn/version "1.9.0"}
 
         ;; Parsing regexes (and some generative testing)
         org.clojure/test.check {:mvn/version "0.10.0"}
@@ -19,13 +19,15 @@
          :extra-paths ["test-resources" "test"]
          :extra-deps {lambdaisland/kaocha {:mvn/version "0.0-529"}}}
   :native-image
-  {:main-opts ["-m clj.native-image lvh.regex-crossword"
+  {:main-opts ["-m clj.native-image lvh.regex-crossword.cli"
                "--verbose"
                "--no-fallback"
                "-Dclojure.compiler.direct-linking=true"
                "-H:Name=regex-crossword"
                "-H:+ReportExceptionStackTraces"
                "--initialize-at-build-time"
+               "--allow-incomplete-classpath"
+               "--enable-https"
                "--report-unsupported-elements-at-runtime"]
    :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
    :extra-deps {clj.native-image {:git/url "https://github.com/taylorwood/clj.native-image.git"

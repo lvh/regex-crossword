@@ -2,8 +2,7 @@
   (:require [lvh.regex-crossword.data :as data]
             [lvh.regex-crossword.logic :refer [solve]]
             [clojure.string :as str]
-            [com.rpl.specter :as sr]
-            [cli-matic.platform])
+            [com.rpl.specter :as sr])
   (:gen-class))
 
 (defn display
@@ -26,13 +25,13 @@
                             (if (= num-spec "*")
                               sr/ALL
                               (-> num-spec (Integer/parseInt) (sr/nthpath))))]
-      (doseq [[set-id puzzle] (sr/select
-                            [sr/ALL
-                             (sr/collect-one :id)
-                             (comp set-id? :id)
-                             :puzzles
-                             puzzle-num-path]
-                            @data/builtin-puzzles)]
+      (doseq [[set-id puzzle] (sr/select*
+                               [sr/ALL
+                                (sr/collect-one :id)
+                                (comp set-id? :id)
+                                :puzzles
+                                puzzle-num-path]
+                               @data/builtin-puzzles)]
         (println "Solving" puzzle "from set" set-id)
         (doseq [[solution n] (map vector (solve puzzle) (range))]
           (println "Solution #" n)
