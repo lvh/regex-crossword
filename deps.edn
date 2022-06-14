@@ -9,8 +9,8 @@
         org.clojure/core.logic {:mvn/version "0.8.11"}
 
         ;; Downloading and parsing puzzles
-        cheshire {:mvn/version "5.9.0"}
-        camel-snake-kebab {:mvn/version "0.4.0"}
+        cheshire/cheshire {:mvn/version "5.9.0"}
+        camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.0"}
         org.martinklepsch/clj-http-lite {:mvn/version "0.4.1"}
         ;; CLI puzzle selection
         com.rpl/specter {:mvn/version "1.1.2"}}
@@ -30,5 +30,7 @@
                "--enable-https"
                "--report-unsupported-elements-at-runtime"]
    :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
-   :extra-deps {clj.native-image {:git/url "https://github.com/taylorwood/clj.native-image.git"
-                                  :sha "e480cb92b9a85913b3bcad9d878db237d810f286"}}}}}
+   :extra-deps
+   {clj.native-image/clj.native-image
+    {:git/url "https://github.com/taylorwood/clj.native-image.git"
+     :sha "e480cb92b9a85913b3bcad9d878db237d810f286"}}}}}
