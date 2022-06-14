@@ -9,7 +9,7 @@
 (defmulti re->goal (fn [pattern lvars ctx] (:type pattern)))
 
 (defmethod re->goal :character
-  [{:keys [character]} [lvar :as lvars] ctx]
+  [{:keys [character]} [lvar :as lvars] _ctx]
   (if (-> lvars count (= 1))
     (l/== character lvar)
     l/fail))
@@ -136,11 +136,15 @@
 (defn solve
   ([puzzle]
    (solve puzzle nil))
-  ([{:keys [patterns-x patterns-y] :as puzzle} {:keys [n] :as opts :or {n 10}}]
-   (let [n-vars (* (count patterns-x) (count patterns-y))
+  ([puzzle opts]
+   (let [{:keys [patterns-x patterns-y]} puzzle
+         {:keys [n] :or {n 10}} opts
+
+         n-vars (* (count patterns-x) (count patterns-y))
          vars (repeatedly n-vars l/lvar)
          rows (partition (count patterns-x) vars)
          cols (apply mapv vector rows)
+
          ctx {::groups (atom [])}
          pattern-goals (map
                         (fn [patterns lvars]
